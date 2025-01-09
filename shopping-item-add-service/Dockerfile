@@ -14,4 +14,4 @@ COPY --from=build /app/out ./
 
 EXPOSE 8080
 
-ENTRYPOINT ["dotnet", "shopping-item-list-service.dll"]
+ENTRYPOINT ["dotnet", "shopping-item-add-service.dll"]
