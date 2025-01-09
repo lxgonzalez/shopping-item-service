@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ShoppingItemService.Data;
+using ShoppingItemAddService.Data;
 using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
