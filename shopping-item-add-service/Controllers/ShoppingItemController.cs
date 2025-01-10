@@ -16,10 +16,20 @@ namespace CartListService.Controllers
         }
         
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShoppingItem>>> GetCartItems()
+        [HttpPost]
+        public async Task<ActionResult<ShoppingItem>> CreateShoppingItem([FromBody] ShoppingItem shoppingItem)
         {
-            return await _context.ShoppingItem.ToListAsync();
+            try
+            {
+                _context.ShoppingItem.Add(shoppingItem);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(CreateShoppingItem), new { id = shoppingItem.Id }, shoppingItem);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
     }
